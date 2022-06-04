@@ -4,9 +4,7 @@
     "description": "A simple popup player for open.spotify.com",
     "version": "0.1",
     "permissions": [
-        "scripting",
-        "http://open.spotify.com/",
-        "https://open.spotify.com/"
+        "scripting"
     ],
     "content_scripts": [
         {

@@ -1,14 +1,14 @@
 let preferences = {
   windowPositionLeft: 0,
   windowPositionTop: 0,
-  windowWidth: 475,
+  windowWidth: 450,
   windowHeight: 170,
   openThisLink: true,
   moveThisPage: true,
   moveThisTab: false
 };
 
-let originalWindow = null;
+let originalWindow = 1;
 
 const popupWindow = (tab) => {
 
@@ -31,10 +31,10 @@ const popupWindow = (tab) => {
 };
 
 
-const moveTab = (tabId, windowId) => {
-  chrome.tabs.move(tabId, {windowId: windowId, index: -1});
-  chrome.windows.update(windowId, {focused: true});
-  chrome.tabs.update(tabId, {active: true});
+const mergeTab = (tabId, windowId) => {
+  chrome.tabs.move(tabId, { windowId: windowId, index: -1 });
+  chrome.windows.update(windowId, { focused: true });
+  chrome.tabs.update(tabId, { active: true });
 }
 
 
@@ -43,7 +43,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender) {
     originalWindow = sender.tab.windowId;
     popupWindow(sender.tab);
   }
-  else if(msg.text == "backToSpotify"){
-    moveTab(sender.tab.id, originalWindow);
+  else if (msg.text == "backToSpotify") {
+    mergeTab(sender.tab.id, originalWindow);
   }
 });
