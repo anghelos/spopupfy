@@ -1,39 +1,11 @@
 function miniplayer() {
   document.body.classList.toggle('spopupfy');
-  if(document.body.classList.contains('spopupfy')){
-  // var win = window.open('https://open.spotify.com/', 'Spotify Mini Player', 'width=400,height=150,top=0,left=0,location=no,menubar=no,status=no,toolbar=no,scrollbars=no,resizable=no, popup=yes');
-  // win.moveTo(0, 0);
-  // win.resizeTo(300, 200);
-  // win.focus();
-
-  let footer = document.querySelector('footer');
-  let image = document.querySelector('footer img');
-  let background = document.querySelector('.spf-background-image');
-  if (!background) {
-    background = document.createElement('img');
-    background.src = image.src;
-    background.classList.add('spf-background-image');
+  if (document.body.classList.contains('spopupfy')) {
+    chrome.runtime.sendMessage({ text: "spopupfy" });
   }
-
-  document.body.classList.add('spopupfy');
-  footer.appendChild(background);
-
-  // Listens for src change on the image
-  let observer = new MutationObserver((changes) => {
-    changes.forEach(change => {
-      if (change.attributeName.includes('src')) {
-        background.src = image.src;
-      }
-    });
-  });
-  observer.observe(image, { attributes: true });
-
-  chrome.runtime.sendMessage({ text: "spopupfy" });
-}
-else{
-  chrome.runtime.sendMessage({ text: "backToSpotify" });
-  document.querySelector('.spf-background-image').remove();
-}
+  else {
+    chrome.runtime.sendMessage({ text: "backToSpotify" });
+  }
 }
 
 // let footer = document.querySelector('.Root__now-playing-bar');
@@ -47,10 +19,31 @@ const addButton = function () {
   <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5v-9zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
   <path d="M2 4.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H3v2.5a.5.5 0 0 1-1 0v-3zm12 7a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H13V8.5a.5.5 0 0 1 1 0v3z"/>
 </svg>`;
-    
+
     document.body.appendChild(button);
   }
   button.addEventListener('click', miniplayer);
+}
+function addBGImage() {
+  let footer = document.querySelector('footer');
+  let image = document.querySelector('footer img');
+  let background = document.querySelector('.spf-background-image');
+  if (!background) {
+    background = document.createElement('img');
+    background.src = image.src;
+    background.classList.add('spf-background-image');
+  }
+  footer.appendChild(background);
+
+  // Listens for src change on the image
+  let observer = new MutationObserver((changes) => {
+    changes.forEach(change => {
+      if (change.attributeName.includes('src')) {
+        background.src = image.src;
+      }
+    });
+  });
+  observer.observe(image, { attributes: true });
 }
 
 addButton();
