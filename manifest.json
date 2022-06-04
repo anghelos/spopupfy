@@ -1,0 +1,31 @@
+{
+    "name": "Spopupfy",
+    "manifest_version": 2,
+    "description": "A simple popup player for open.spotify.com",
+    "version": "0.1",
+    "permissions": [
+        "scripting",
+        "http://open.spotify.com/",
+        "https://open.spotify.com/"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "http://open.spotify.com/",
+                "https://open.spotify.com/"
+            ],
+            "js": [
+                "spopupfy.js"
+            ],
+            "css": [
+                "spopupfy.css"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    }
+}

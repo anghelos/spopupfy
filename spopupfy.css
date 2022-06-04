@@ -1,0 +1,110 @@
+.spopupfy footer {
+    position: fixed;
+    top: 0;
+    height: 100vh !important;
+    width: 100vw;
+
+}
+
+.spopupfy footer img {
+    display: block;
+}
+
+.spopupfy footer>div {
+    width: 100vw;
+    height: 100vh !important;
+    justify-content: space-evenly !important;
+    padding-bottom: 20vh !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    background-color: rgba(24, 24, 24, 0.2) !important;
+}
+
+.spopupfy footer>div>div:first-child {
+    width: 70%;
+}
+
+.spopupfy footer>div>div:nth-child(2) {
+    width: 30%;
+}
+
+.spopupfy footer>div>div:first-child :is(.control-button-wrapper, .control-button),
+.spopupfy .player-controls__right :not(:first-child), .player-controls__left :not(:last-child), .spopupfy [aria-label="Expand"],
+.spopupfy footer>div>div:last-child{
+    display: none;
+}
+
+.spopupfy .playback-bar {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    width: 100vw;
+}
+
+
+.spopupfy .spf-background-image {
+    position: absolute;
+    object-fit: cover;
+    top: -10vh;
+    left: -10vw;
+    width: 120vw;
+    height: 120vh;
+    z-index: -1;
+    filter: blur(15px);
+}
+
+.spopupfy .player-controls{
+    mix-blend-mode: screen;
+}
+
+.spopupfy footer *:is(::before, ::after) {
+    background: none !important;
+    box-shadow: none !important;
+}
+
+.spopupfy .Root__top-container> :not(.Root__now-playing-bar) {
+    display: none;
+}
+
+.spopupfy {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.spopupfy span a,
+.spopupfy .playback-bar div {
+    color: #fff !important;
+}
+
+.spopupfy-button {
+    all: unset;
+    position: fixed;
+    bottom: 6px;
+    right: 1rem;
+    color: #fff;
+    width: 1rem;
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 0.8;
+}
+.spopupfy-button svg{
+    width: 100%;
+    height: auto;
+    
+}
+
+.spopupfy .spopupfy-button{
+    bottom: 30px;
+
+}
+
+.shadow{
+    box-shadow: 0 0 3px rgba(0,0,0,0.1) !important;
+}
+
+*{
+    text-shadow: 0 0 3px rgba(0,0,0,0.2);
+}
+
+/* todo: move everything to media query */
