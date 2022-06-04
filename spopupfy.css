@@ -78,8 +78,11 @@
         filter: blur(15px);
     }
 
-    .player-controls * * {
-        /* mix-blend-mode: screen; */
+    .player-controls {
+        mix-blend-mode: screen;
+    }
+
+    .player-controls [aria-label] {
         cursor: pointer;
     }
 
@@ -87,6 +90,11 @@
     [aria-label="Pause"] {
         color: #fff;
         background-color: transparent;
+        transform: scale(1.2);
+    }
+    [aria-label="Play"]:hover,
+    [aria-label="Pause"]:hover{
+        transform: scale(1.5);
     }
 
     footer *:is(::before, ::after) {
