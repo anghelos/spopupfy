@@ -39,7 +39,7 @@ function addBGImage() {
       }
     });
   });
-  observer.observe(image, { attributes: true });
+  observer.observe(image, { attributeFilter: ["src"] });
   background.src = image.src;
 }
 
