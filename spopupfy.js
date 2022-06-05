@@ -1,3 +1,5 @@
+let bodyObserver;
+
 function miniplayer() {
   document.body.classList.toggle('spopupfy');
   if (document.body.classList.contains('spopupfy')) {
@@ -27,29 +29,24 @@ const addButton = function () {
 function addBGImage() {
   let footer = document.querySelector('footer');
   let image = document.querySelector('footer img');
-  // let background = document.querySelector('.spf-background-image');
-  // if (!background) {
+  let background = document.querySelector('.spf-background-image');
+  if (!background) {
     background = document.createElement('img');
     background.classList.add('spf-background-image');
     footer.appendChild(background);
-
-    // Listens for src change on the image
-    let observer = new MutationObserver((changes) => {
-      changes.forEach(change => {
-        if (change.attributeName.includes('src')) {
-          background.src = image.src;
-        }
-      });
+  }
+  // Listens for src change on the image
+  let observer = new MutationObserver((changes) => {
+    changes.forEach(change => {
+      if (change.attributeName.includes('src')) {
+        background.src = image.src;
+      }
     });
-    observer.observe(image, { attributes: true });
-  // }
-
+  });
+  observer.observe(image, { attributes: true });
   background.src = image.src;
 }
 
-addButton();
-
-let bodyObserver;
 function waitForElm(selector) {
   return new Promise(resolve => {
     if (document.querySelector(selector)) {
@@ -70,7 +67,10 @@ function waitForElm(selector) {
   });
 }
 
+
+addButton();
+
 waitForElm('footer img').then(function () {
   addBGImage();
-  bodyObserver.disconnect();
+  // bodyObserver.disconnect();
 });
