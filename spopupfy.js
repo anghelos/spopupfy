@@ -1,5 +1,3 @@
-let bodyObserver;
-
 function miniplayer() {
   document.body.classList.toggle('spopupfy');
   if (document.body.classList.contains('spopupfy')) {
@@ -51,14 +49,14 @@ function waitForElm(selector) {
       return resolve(document.querySelector(selector));
     }
 
-    bodyObserver = new MutationObserver(mutations => {
+    const observer = new MutationObserver(mutations => {
       if (document.querySelector(selector)) {
         resolve(document.querySelector(selector));
         observer.disconnect();
       }
     });
 
-    bodyObserver.observe(document.body, {
+    observer.observe(document.body, {
       childList: true,
       subtree: true
     });
@@ -70,5 +68,4 @@ addButton();
 
 waitForElm('footer img').then(function () {
   addBGImage();
-  // bodyObserver.disconnect();
 });
