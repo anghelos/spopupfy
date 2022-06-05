@@ -27,25 +27,50 @@ const addButton = function () {
 function addBGImage() {
   let footer = document.querySelector('footer');
   let image = document.querySelector('footer img');
-  let background = document.querySelector('.spf-background-image');
-  if (!background) {
+  // let background = document.querySelector('.spf-background-image');
+  // if (!background) {
     background = document.createElement('img');
-    background.src = image.src;
     background.classList.add('spf-background-image');
-  }
-  footer.appendChild(background);
+    footer.appendChild(background);
 
-  // Listens for src change on the image
-  let observer = new MutationObserver((changes) => {
-    changes.forEach(change => {
-      if (change.attributeName.includes('src')) {
-        background.src = image.src;
-      }
+    // Listens for src change on the image
+    let observer = new MutationObserver((changes) => {
+      changes.forEach(change => {
+        if (change.attributeName.includes('src')) {
+          background.src = image.src;
+        }
+      });
     });
-  });
-  observer.observe(image, { attributes: true });
+    observer.observe(image, { attributes: true });
+  // }
+
+  background.src = image.src;
 }
 
 addButton();
 
+let bodyObserver;
+function waitForElm(selector) {
+  return new Promise(resolve => {
+    if (document.querySelector(selector)) {
+      return resolve(document.querySelector(selector));
+    }
 
+    bodyObserver = new MutationObserver(mutations => {
+      if (document.querySelector(selector)) {
+        resolve(document.querySelector(selector));
+        observer.disconnect();
+      }
+    });
+
+    bodyObserver.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  });
+}
+
+waitForElm('footer img').then(function () {
+  addBGImage();
+  bodyObserver.disconnect();
+});

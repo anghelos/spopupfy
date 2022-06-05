@@ -54,7 +54,8 @@
     .player-controls__right :not(:first-child),
     .player-controls__left :not(:last-child),
     [aria-label="Expand"],
-    footer>div>div:last-child {
+    footer>div>div:nth-child(n+3),
+    .Root__top-container> :not(.Root__now-playing-bar) {
         display: none;
     }
 
@@ -94,16 +95,12 @@
     }
     [aria-label="Play"]:hover,
     [aria-label="Pause"]:hover{
-        transform: scale(1.5);
+        transform: scale(1.4);
     }
 
     footer *:is(::before, ::after) {
         background: none !important;
         box-shadow: none !important;
-    }
-
-    .Root__top-container> :not(.Root__now-playing-bar) {
-        display: none;
     }
 
     body {

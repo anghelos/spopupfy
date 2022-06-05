@@ -1,16 +1,20 @@
 {
     "name": "Spopupfy",
     "manifest_version": 2,
-    "description": "A simple popup player for open.spotify.com",
+    "description": "A simple mini player for open.spotify.com",
     "version": "0.1",
+    "homepage_url": "https://github.com/anghelos/spopupfy",
+    "developer": {
+        "name": "Anghelos Coulon",
+        "url": "https://github.com/anghelos/spopupfy"
+      },
     "permissions": [
         "scripting"
     ],
     "content_scripts": [
         {
             "matches": [
-                "http://open.spotify.com/",
-                "https://open.spotify.com/"
+                "*://open.spotify.com/*"
             ],
             "js": [
                 "spopupfy.js"

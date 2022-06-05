@@ -19,10 +19,10 @@ const popupWindow = (tab) => {
 
   let setting = {
     type: 'popup',
-    top: preferences.windowPositionTop,
-    left: preferences.windowPositionLeft,
-    width: preferences.windowWidth,
-    height: preferences.windowHeight,
+    top: top,
+    left: left,
+    width: width,
+    height: height,
     tabId: tab.id
   };
   chrome.windows.create(setting, windowInfo => {
