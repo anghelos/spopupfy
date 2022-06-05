@@ -10,8 +10,6 @@ function miniplayer() {
   }
 }
 
-// let footer = document.querySelector('.Root__now-playing-bar');
-// footer.style.position = 'relative';
 const addButton = function () {
   let button = document.querySelector('.spopupfy-button');
   if (!button) {
