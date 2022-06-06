@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/anghelos/spopupfy/master/icon.svg" width="96" style="float: right" alt="Spopupfy logo">
+<img src="https://raw.githubusercontent.com/anghelos/spopupfy/master/icon.svg" width="96" alt="Spopupfy logo">
 
 # Spopupfy
 
