@@ -14,7 +14,9 @@ If you need to access to more controls, you can just quickly resize the popup wi
 
 ## Screenshots
 
-![](https://raw.githubusercontent.com/anghelos/spopupfy/master/screenshots/screenshot-1.png)
+![Spopupfy Screenshot](https://raw.githubusercontent.com/anghelos/spopupfy/master/screenshots/screenshot-1.png)
+![Spopupfy Screenshot](https://raw.githubusercontent.com/anghelos/spopupfy/master/screenshots/screenshot-2.png)
+![Spopupfy Screenshot](https://raw.githubusercontent.com/anghelos/spopupfy/master/screenshots/screenshot-3.png)
 ## Limitations
 
 I have unfortunately not been able to find a way to remove the window decorations on Firefox. I will probably update this to Manifest V3 when Firefox adopts it, and see if a solution exists there.
