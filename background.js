@@ -2,10 +2,7 @@ let preferences = {
   windowPositionLeft: 0,
   windowPositionTop: 0,
   windowWidth: 450,
-  windowHeight: 170,
-  openThisLink: true,
-  moveThisPage: true,
-  moveThisTab: false
+  windowHeight: 170
 };
 
 let originalWindow = 1;
