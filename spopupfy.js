@@ -1,3 +1,4 @@
+
 function miniplayer() {
   document.body.classList.toggle('spopupfy');
   if (document.body.classList.contains('spopupfy')) {
@@ -22,9 +23,8 @@ const addButton = function () {
   }
   button.addEventListener('click', miniplayer);
 }
-function addBGImage() {
+function addBGImage(image) {
   let footer = document.querySelector('footer');
-  let image = document.querySelector('footer img');
   let background = document.querySelector('.spf-background-image');
   if (!background) {
     background = document.createElement('img');
@@ -41,6 +41,29 @@ function addBGImage() {
   });
   observer.observe(image, { attributeFilter: ["src"] });
   background.src = image.src;
+  image.id = 'spf-cover-art';
+}
+
+// Listens for the removal of the cover image (when Spotify replaces it with an ad), then resets the cover art observer
+function watchForImageRemoval() {
+  const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      if (mutation.removedNodes.length > 0) {
+        mutation.removedNodes.forEach(node => {
+          if (!document.getElementById('spf-cover-art')) {
+            waitForElm('.cover-art-image').then((element) => {
+              addBGImage(element);
+            });
+          }
+        });
+      }
+    });
+  });
+
+  observer.observe(document.querySelector('footer'), {
+    childList: true,
+    subtree: true
+  });
 }
 
 function waitForElm(selector) {
@@ -66,6 +89,8 @@ function waitForElm(selector) {
 
 addButton();
 
-waitForElm('footer img').then(function () {
-  addBGImage();
+waitForElm('.cover-art-image').then((element) => {
+  addBGImage(element);
 });
+
+watchForImageRemoval();
