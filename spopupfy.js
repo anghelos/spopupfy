@@ -3,6 +3,8 @@ const popupSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 11" fi
                     <rect class="inner" x="2.6" y="2.6" width="5" height="2.5" rx=".4" ry=".4"/>
                   </svg>`;
 
+const popup = new DOMParser().parseFromString(popupSVG, 'image/svg+xml');
+
 function miniplayer() {
   document.body.classList.toggle('spopupfy');
   if (document.body.classList.contains('spopupfy')) {
@@ -18,7 +20,7 @@ const addButton = function () {
   if (!button) {
     button = document.createElement('button');
     button.id = 'spopupfy-button';
-    button.innerHTML = popupSVG;
+    button.appendChild(popup.documentElement.cloneNode(true));
 
     document.body.appendChild(button);
   }

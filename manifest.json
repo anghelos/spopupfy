@@ -12,9 +12,6 @@
         "name": "Anghelos Coulon",
         "url": "https://github.com/anghelos/spopupfy"
       },
-    "permissions": [
-        "scripting"
-    ],
     "content_scripts": [
         {
             "matches": [
