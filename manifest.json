@@ -3,6 +3,10 @@
     "manifest_version": 2,
     "description": "A simple mini player for open.spotify.com",
     "version": "0.1",
+    "icons": {
+        "48": "icon.svg",
+        "96": "icon.svg"
+    },
     "homepage_url": "https://github.com/anghelos/spopupfy",
     "developer": {
         "name": "Anghelos Coulon",

@@ -1,4 +1,4 @@
-.spopupfy-button {
+#spopupfy-button {
     all: unset;
     position: fixed;
     bottom: 6px;
@@ -11,7 +11,7 @@
 }
 
 
-.spopupfy-button svg {
+#spopupfy-button svg {
     width: 100%;
     height: auto;
 
@@ -114,13 +114,12 @@
         color: #fff !important;
     }
 
-    .spopupfy-button {
+    #spopupfy-button {
         top: 7px;
         bottom: unset;
-        right: 10px;
+        right: 16px;
         opacity: 0.4
     }
-
     .shadow {
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) !important;
     }
@@ -132,6 +131,15 @@
 }
 
 
-.spopupfy-button:hover {
+#spopupfy-button:hover {
     opacity: 1;
+}
+
+#spopupfy-button .inner{
+    transition: all 0.2s ease-in-out;
+}
+
+.spopupfy #spopupfy-button:hover .inner{
+    width: 10.8px;
+    height: 5.8px;
 }
