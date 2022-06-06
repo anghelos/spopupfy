@@ -1,8 +1,3 @@
-const expandSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 11" fill="currentColor">
-<rect x=".75" y=".75" width="14.5" height="9.5" rx="2.7" ry="2.7" fill="none" stroke="currentColor" stroke-width="1.5"/>
-<rect x="2.6" y="2.6" width="10.8" height="5.8" rx=".4" ry=".4"/>
-</svg>`;
-
 const popupSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 11" fill="currentColor">
                     <rect x=".75" y=".75" width="14.5" height="9.5" rx="2.7" ry="2.7" fill="none" stroke="currentColor" stroke-width="1.5"/>
                     <rect class="inner" x="2.6" y="2.6" width="5" height="2.5" rx=".4" ry=".4"/>
@@ -12,11 +7,9 @@ function miniplayer() {
   document.body.classList.toggle('spopupfy');
   if (document.body.classList.contains('spopupfy')) {
     chrome.runtime.sendMessage({ text: "spopupfy" });
-    // this.innerHTML = expandSVG;
   }
   else {
     chrome.runtime.sendMessage({ text: "backToSpotify" });
-    // this.innerHTML = popupSVG;
   }
 }
 
