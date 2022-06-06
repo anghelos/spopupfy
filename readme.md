@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/anghelos/spopupfy/master/icon.svg" width="96" style="float: right" alt="Spopupfy logo">
+
 # Spopupfy
 
 > A simple Firefox addon that pops up a mini player on [open.spotify.com](https://open.spotify.com/).
