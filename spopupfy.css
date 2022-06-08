@@ -45,15 +45,21 @@
         width: 60%;
     }
 
+    /* Remove transform when cover art is expanded */
+    [data-testid="now-playing-widget"] {
+        transform: none !important;
+    }
+
     footer>div>div:nth-child(2) {
         width: 35%;
         margin-top: 0.5rem
     }
 
-    footer>div>div:first-child :is(.control-button-wrapper, .control-button),
+
     .player-controls__right :not(:first-child),
     .player-controls__left :not(:last-child),
     [aria-label="Expand"],
+    [data-testid="add-button"],
     footer>div>div:nth-child(n+3),
     .Root__top-container> :not(.Root__now-playing-bar) {
         display: none;
@@ -76,7 +82,7 @@
         width: 110vw;
         height: 110vh;
         z-index: -1;
-        filter: blur(15px);
+        filter: blur(2.5vw);
     }
 
     .player-controls {
@@ -87,14 +93,13 @@
         cursor: pointer;
     }
 
-    [aria-label="Play"],
-    [aria-label="Pause"] {
+    [data-testid="control-button-playpause"] {
         color: #fff;
         background-color: transparent;
         transform: scale(1.2);
     }
-    [aria-label="Play"]:hover,
-    [aria-label="Pause"]:hover{
+
+    [data-testid="control-button-playpause"]:hover {
         transform: scale(1.4);
     }
 
@@ -120,6 +125,7 @@
         right: 16px;
         opacity: 0.4
     }
+
     .shadow {
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) !important;
     }
@@ -130,16 +136,40 @@
 
 }
 
+@media only screen and (max-width: 400px) {
+    .cover-art {
+        display: none;
+    }
+
+    [data-testid="now-playing-widget"] {
+        justify-content: center !important;
+    }
+
+    [data-testid="now-playing-widget"] * {
+        margin: 0;
+    }
+
+    footer>div {
+        padding: 1rem !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+    }
+
+    footer>div>div {
+        width: fit-content !important;
+    }
+}
+
 
 #spopupfy-button:hover {
     opacity: 1;
 }
 
-#spopupfy-button .inner{
+#spopupfy-button .inner {
     transition: all 0.2s ease-in-out;
 }
 
-.spopupfy #spopupfy-button:hover .inner{
+.spopupfy #spopupfy-button:hover .inner {
     width: 10.8px;
     height: 5.8px;
 }
