@@ -5,7 +5,8 @@
     "version": "0.2",
     "icons": {
         "48": "icon.svg",
-        "96": "icon.svg"
+        "96": "icon.svg",
+        "128": "icon.svg"
     },
     "homepage_url": "https://github.com/anghelos/spopupfy",
     "developer": {
