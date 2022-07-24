@@ -31,7 +31,7 @@
 
     }
 
-    footer>div {
+    footer>div:first-child {
         width: 100vw;
         height: 100vh !important;
         justify-content: space-between !important;
@@ -52,7 +52,7 @@
 
     footer>div>div:nth-child(2) {
         width: 35%;
-        margin-top: 0.5rem
+        margin-top: 1rem;
     }
 
     [data-testid="control-button-shuffle"],
@@ -87,6 +87,20 @@
     }
 
 
+/*    Listening on ... message   */
+
+    .encore-bright-accent-set{
+        position: absolute;
+        background-color: transparent !important;
+        color: #fff !important;
+        width: 100vw !important;
+        padding: 0 !important;
+        transform: scale(0.8);
+        bottom: 2em;
+        left:0;
+    }
+    
+    
     .spf-background-image {
         position: absolute;
         display: block;
