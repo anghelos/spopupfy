@@ -55,9 +55,23 @@
         margin-top: 0.5rem
     }
 
-
-    .player-controls__right :not(:first-child),
-    .player-controls__left :not(:last-child),
+    [data-testid="control-button-shuffle"],
+    [data-testid="control-button-repeat"]{
+        position:fixed;
+        top: 4.5px;
+        right: 70px;
+        transform: scale(0.8);
+    }
+    [data-testid="control-button-repeat"]{
+        right: 3em;
+    }
+    
+    .player-controls__buttons button::after{
+        bottom: unset !important;
+        top: 0;
+    }
+    
+/*     .player-controls__right :not(:first-child), */
     [aria-label="Expand"],
     [data-testid="add-button"],
     footer>div>div:nth-child(n+3),
