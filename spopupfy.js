@@ -52,13 +52,11 @@ function watchForImageRemoval() {
   const observer = new MutationObserver(mutations => {
     mutations.forEach(mutation => {
       if (mutation.removedNodes.length > 0) {
-        mutation.removedNodes.forEach(node => {
           if (!document.getElementById('spf-cover-art')) {
             waitForElm('.cover-art-image').then((element) => {
               addBGImage(element);
             });
           }
-        });
       }
     });
   });
