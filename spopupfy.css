@@ -17,7 +17,7 @@
 
 }
 
-.spf-background-image {
+#spf-background-image {
     display: none;
 }
 
@@ -118,8 +118,8 @@
     }
 
 
-    .spf-background-image {
-        position: absolute;
+    #spf-background-image, #spf-old-cover {
+        position: fixed;
         display: block;
         object-fit: cover;
         top: -5vh;
@@ -131,11 +131,11 @@
         transition: opacity 1s ease-in;
         opacity: 1;
     }
-    .spf-background-image.transparent{
+    #spf-background-image.transparent{
         opacity:0;
         transition:none;
     }
-    .spf-old-cover{
+    #spf-old-cover{
         z-index: -2;
     }
 

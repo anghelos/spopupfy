@@ -30,26 +30,22 @@ const addButton = function () {
 
 function addBGImage(image) {
   let footer = document.querySelector('footer');
-  let background = document.querySelector('.spf-background-image');
+  let background = document.getElementById('spf-background-image');
   if (!background) {
     background = document.createElement('img');
-    background.classList.add('spf-background-image');
+    background.id = 'spf-background-image';
     footer.appendChild(background);
   }
   // Listens for src change on the image
   let observer = new MutationObserver((changes) => {
     changes.forEach(change => {
       if (change.attributeName.includes('src')) {
-        console.log("it changed");
-        // Make a clone of the background for a smoother transition
+
+        // Makes a second image for a smooth fade-in transition
         let oldbg = document.createElement('img');
-        console.log("I made the element");
-        oldbg.classList.add('spf-background-image','spf-old-cover');
-        console.log("I added the class");
+        oldbg.id = 'spf-old-cover';
         oldbg.src = background.src;
-        console.log("I changed the src");
         footer.appendChild(oldbg);
-        console.log("I appended it!")
         background.classList.add("transparent");
         background.src = image.src;
         setTimeout(function(){
