@@ -49,19 +49,16 @@ function addBGImage(image) {
 
 // Listens for the removal of the cover image (when Spotify replaces it with an ad), then resets the cover art observer
 function watchForImageRemoval() {
-  const observer = new MutationObserver(mutations => {
-    mutations.forEach(mutation => {
-      if (mutation.removedNodes.length > 0) {
-          if (!document.getElementById('spf-cover-art')) {
-            waitForElm('.cover-art-image').then((element) => {
-              addBGImage(element);
-            });
-          }
-      }
-    });
+  const observer = new MutationObserver(() => {
+    if (!document.getElementById('spf-cover-art')) {
+      console.log("SPOPUPFY: Ad detected - Re-attaching cover-art listener");
+      waitForElm('.cover-art-image').then((element) => {
+        addBGImage(element);
+      });
+    }
   });
 
-  observer.observe(document.querySelector('footer'), {
+  observer.observe(document.querySelector('[data-testid="now-playing-widget"]'), {
     childList: true,
     subtree: true
   });
