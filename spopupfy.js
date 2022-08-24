@@ -26,6 +26,8 @@ const addButton = function () {
   }
   button.addEventListener('click', miniplayer);
 }
+
+
 function addBGImage(image) {
   let footer = document.querySelector('footer');
   let background = document.querySelector('.spf-background-image');
@@ -38,7 +40,25 @@ function addBGImage(image) {
   let observer = new MutationObserver((changes) => {
     changes.forEach(change => {
       if (change.attributeName.includes('src')) {
+        console.log("it changed");
+        // Make a clone of the background for a smoother transition
+        let oldbg = document.createElement('img');
+        console.log("I made the element");
+        oldbg.classList.add('spf-background-image','spf-old-cover');
+        console.log("I added the class");
+        oldbg.src = background.src;
+        console.log("I changed the src");
+        footer.appendChild(oldbg);
+        console.log("I appended it!")
+        background.classList.add("transparent");
         background.src = image.src;
+        setTimeout(function(){
+          background.classList.remove("transparent");
+          setTimeout(function(){
+            footer.removeChild(oldbg);
+          },1100);
+        }, 100);
+        
       }
     });
   });

@@ -65,6 +65,7 @@
         color: #fff !important;
         opacity: 0.6;
     }
+    
     :is([data-testid="control-button-shuffle"],
     [data-testid="control-button-repeat"],
     .control-button-heart):hover,
@@ -127,6 +128,15 @@
         height: 110vh;
         z-index: -1;
         filter: blur(2.5vw);
+        transition: opacity 1s ease-in;
+        opacity: 1;
+    }
+    .spf-background-image.transparent{
+        opacity:0;
+        transition:none;
+    }
+    .spf-old-cover{
+        z-index: -2;
     }
 
     .player-controls {
