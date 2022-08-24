@@ -56,24 +56,40 @@
     }
 
     [data-testid="control-button-shuffle"],
-    [data-testid="control-button-repeat"]{
-        position:fixed;
+    [data-testid="control-button-repeat"],
+    .control-button-heart {
+        position: fixed;
         top: 4.5px;
         right: 70px;
         transform: scale(0.8);
+        color: #fff !important;
+        opacity: 0.6;
     }
-    [data-testid="control-button-repeat"]{
-        right: 3em;
+    :is([data-testid="control-button-shuffle"],
+    [data-testid="control-button-repeat"],
+    .control-button-heart):hover,
+    [aria-checked="true"], [aria-checked="mixed"]{
+        opacity: 1;
     }
-    
-    .player-controls__buttons button::after{
+
+    [data-testid="control-button-repeat"] {
+        right: 40px;
+    }
+
+    .control-button-heart {
+        right: 100px;
+        cursor: pointer;
+    }
+
+
+
+    .player-controls__buttons button::after {
         bottom: unset !important;
         top: 0;
     }
-    
-/*     .player-controls__right :not(:first-child), */
+
+    /*     .player-controls__right :not(:first-child), */
     [aria-label="Expand"],
-    [data-testid="add-button"],
     footer>div>div:nth-child(n+3),
     .Root__top-container> :not(.Root__now-playing-bar) {
         display: none;
@@ -87,9 +103,9 @@
     }
 
 
-/*    Listening on ... message   */
+    /*    Listening on ... message   */
 
-    .encore-bright-accent-set{
+    .encore-bright-accent-set {
         position: absolute;
         background-color: transparent !important;
         color: #fff !important;
@@ -97,10 +113,10 @@
         padding: 0 !important;
         transform: scale(0.8);
         bottom: 2em;
-        left:0;
+        left: 0;
     }
-    
-    
+
+
     .spf-background-image {
         position: absolute;
         display: block;
@@ -151,7 +167,7 @@
         top: 7px;
         bottom: unset;
         right: 16px;
-        opacity: 0.62
+        opacity: 0.6;
     }
 
     .shadow {
@@ -169,7 +185,7 @@
         display: none;
     }
 
-    
+
     [data-testid="now-playing-widget"] {
         justify-content: center !important;
     }
@@ -184,6 +200,7 @@
         justify-content: center !important;
         gap: 5vh !important;
     }
+
     footer>div>div:nth-child(2) {
         margin-top: 2vh;
     }
