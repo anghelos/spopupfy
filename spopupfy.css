@@ -151,7 +151,7 @@
         top: 7px;
         bottom: unset;
         right: 16px;
-        opacity: 0.4
+        opacity: 0.62
     }
 
     .shadow {
@@ -169,6 +169,7 @@
         display: none;
     }
 
+    
     [data-testid="now-playing-widget"] {
         justify-content: center !important;
     }
@@ -177,10 +178,14 @@
         margin: 0;
     }
 
-    footer>div {
-        padding: 1rem !important;
+    footer>div:first-child {
+        padding: 5vh !important;
         flex-direction: column !important;
         justify-content: center !important;
+        gap: 5vh !important;
+    }
+    footer>div>div:nth-child(2) {
+        margin-top: 2vh;
     }
 
     footer>div>div {
