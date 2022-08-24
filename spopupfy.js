@@ -51,7 +51,6 @@ function addBGImage(image) {
 function watchForImageRemoval() {
   const observer = new MutationObserver(() => {
     if (!document.getElementById('spf-cover-art')) {
-      console.log("SPOPUPFY: Ad detected - Re-attaching cover-art listener");
       waitForElm('.cover-art-image').then((element) => {
         addBGImage(element);
       });
