@@ -1,3 +1,7 @@
+:root{
+    --baseopacity: 0.2;
+}
+
 #spopupfy-button {
     all: unset;
     position: fixed;
@@ -63,15 +67,11 @@
         right: 70px;
         transform: scale(0.8);
         color: #fff !important;
-        opacity: 0.6;
+        opacity: var(--baseopacity);
+        transition: opacity 0.4s ease-out;
     }
     
-    :is([data-testid="control-button-shuffle"],
-    [data-testid="control-button-repeat"],
-    .control-button-heart):hover,
-    [aria-checked="true"], [aria-checked="mixed"]{
-        opacity: 1;
-    }
+    
 
     [data-testid="control-button-repeat"] {
         right: 40px;
@@ -89,7 +89,22 @@
         top: 0;
     }
 
-    /*     .player-controls__right :not(:first-child), */
+    body:hover {
+        --baseopacity: 0.6;
+    }
+
+    [aria-checked="true"], [aria-checked="mixed"]{
+        opacity: calc(var(--baseopacity) + 0.38);
+    }
+
+    :is([data-testid="control-button-shuffle"],
+    [data-testid="control-button-repeat"],
+    .control-button-heart):hover{
+        opacity: calc(var(--baseopacity) + 0.38);
+        transition: none;
+    }
+
+
     [aria-label="Expand"],
     footer>div>div:nth-child(n+3),
     .Root__top-container> :not(.Root__now-playing-bar) {
@@ -100,7 +115,7 @@
         position: absolute;
         bottom: 1rem;
         left: 0;
-        width: 100vw;
+        width: 100vw;       
     }
 
 
@@ -177,7 +192,8 @@
         top: 7px;
         bottom: unset;
         right: 16px;
-        opacity: 0.6;
+        opacity: var(--baseopacity);
+        transition: opacity 0.4s ease-out;
     }
 
     .shadow {
@@ -223,6 +239,7 @@
 
 #spopupfy-button:hover {
     opacity: 1;
+    transition: none;
 }
 
 #spopupfy-button .inner {
@@ -232,4 +249,9 @@
 .spopupfy #spopupfy-button:hover .inner {
     width: 10.8px;
     height: 5.8px;
+}
+
+/* Hide context menus */
+.spopupfy #context-menu {
+    display: none;
 }
