@@ -5,6 +5,24 @@ const popupSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 11" fi
 
 const popup = new DOMParser().parseFromString(popupSVG, 'image/svg+xml');
 
+// Listens for the removal of the cover image (when Spotify replaces it with an ad), then resets the cover art observer
+const ImageObserver = new MutationObserver(() => {
+  if (!document.getElementById('spf-cover-art')) {
+    console.log('SPOPUPFY: Cover art removed, fixing');
+    waitForElm('.cover-art-image').then((element) => {
+      addBGImage(element);
+    });
+  }
+});
+
+// Activates the image observer
+function watchForImageRemoval() {
+  ImageObserver.observe(document.querySelector('footer'), {
+    childList: true,
+    subtree: true
+  });
+}
+
 function miniplayer() {
   document.body.classList.toggle('spopupfy');
   if (document.body.classList.contains('spopupfy')) {
@@ -69,22 +87,6 @@ function addBGImage(image) {
   background.src = image.src;
 }
 
-// Listens for the removal of the cover image (when Spotify replaces it with an ad), then resets the cover art observer
-function watchForImageRemoval() {
-  const observer = new MutationObserver(() => {
-    if (!document.getElementById('spf-cover-art')) {
-      console.log('SPOPUPFY: Cover art removed, fixing');
-      waitForElm('.cover-art-image').then((element) => {
-        addBGImage(element);
-      });
-    }
-  });
-
-  observer.observe(document.querySelector('footer'), {
-    childList: true,
-    subtree: true
-  });
-}
 
 function waitForElm(selector) {
   return new Promise(resolve => {
@@ -113,14 +115,9 @@ waitForElm('.cover-art-image').then((element) => {
   addBGImage(element);
 });
 
-watchForImageRemoval();
+waitForElm('footer').then(watchForImageRemoval());
 
-//Watches for missing cover image every 2 minutes
-setInterval(() => {
-  if (!document.getElementById('spf-cover-art')) {
-    console.log('SPOPUPFY: Interval - Fixing cover art');
-    waitForElm('.cover-art-image').then((element) => {
-      addBGImage(element);
-    });
-  }
-}, 120000);
+// //Re-arms the observer every 2 minutes, to account for AdBlockers
+// setInterval(() => {
+//   watchForImageRemoval();
+// }, 120000);
