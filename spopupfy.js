@@ -9,6 +9,9 @@ function miniplayer() {
   document.body.classList.toggle('spopupfy');
   if (document.body.classList.contains('spopupfy')) {
     chrome.runtime.sendMessage({ text: "spopupfy" });
+    waitForElm('.cover-art-image').then((element) => {
+      addBGImage(element);
+    });
   }
   else {
     chrome.runtime.sendMessage({ text: "backToSpotify" });
@@ -31,6 +34,7 @@ const addButton = function () {
 function addBGImage(image) {
   let footer = document.querySelector('footer');
   let background = document.getElementById('spf-background-image');
+  image.id = 'spf-cover-art';
   if (!background) {
     background = document.createElement('img');
     background.id = 'spf-background-image';
@@ -51,7 +55,10 @@ function addBGImage(image) {
         setTimeout(function(){
           background.classList.remove("transparent");
           setTimeout(function(){
-            footer.removeChild(oldbg);
+            oldbg.style.opacity = 0;
+            setTimeout(function(){
+              footer.removeChild(oldbg);
+            }, 1000);
           },1100);
         }, 100);
         
@@ -60,20 +67,20 @@ function addBGImage(image) {
   });
   observer.observe(image, { attributeFilter: ["src"] });
   background.src = image.src;
-  image.id = 'spf-cover-art';
 }
 
 // Listens for the removal of the cover image (when Spotify replaces it with an ad), then resets the cover art observer
 function watchForImageRemoval() {
   const observer = new MutationObserver(() => {
     if (!document.getElementById('spf-cover-art')) {
+      console.log('SPOPUPFY: Cover art removed, fixing');
       waitForElm('.cover-art-image').then((element) => {
         addBGImage(element);
       });
     }
   });
 
-  observer.observe(document.querySelector('[data-testid="now-playing-widget"]'), {
+  observer.observe(document.querySelector('footer'), {
     childList: true,
     subtree: true
   });
@@ -107,3 +114,13 @@ waitForElm('.cover-art-image').then((element) => {
 });
 
 watchForImageRemoval();
+
+//Watches for missing cover image every 2 minutes
+setInterval(() => {
+  if (!document.getElementById('spf-cover-art')) {
+    console.log('SPOPUPFY: Interval - Fixing cover art');
+    waitForElm('.cover-art-image').then((element) => {
+      addBGImage(element);
+    });
+  }
+}, 120000);
