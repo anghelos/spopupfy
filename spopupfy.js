@@ -6,21 +6,30 @@ const popupSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 11" fi
 const popup = new DOMParser().parseFromString(popupSVG, 'image/svg+xml');
 
 // Listens for the removal of the cover image (when Spotify replaces it with an ad), then resets the cover art observer
-const ImageObserver = new MutationObserver(() => {
+const BackupObserver = new MutationObserver(() => {
+  // console.log('SPOPUPFY: Mutation observed');
   if (!document.getElementById('spf-cover-art')) {
     console.log('SPOPUPFY: Cover art removed, fixing');
-    waitForElm('.cover-art-image').then((element) => {
-      addBGImage(element);
-    });
+    setTimeout(() => {
+      waitForElm('.cover-art-image').then((element) => {
+        addBGImage(element);
+      });
+    }, 800);
   }
 });
 
+let imageObserver = new MutationObserver(() => { });
+
+
+
 // Activates the image observer
 function watchForImageRemoval() {
-  ImageObserver.observe(document.querySelector('footer'), {
+  // console.log('SPOPUPFY: Attempting to watch for image removal');
+  BackupObserver.observe(document.querySelector('[data-testid="now-playing-widget"]'), {
     childList: true,
     subtree: true
   });
+  // console.log('SPOPUPFY: Footer observer started');
 }
 
 function miniplayer() {
@@ -59,10 +68,8 @@ function addBGImage(image) {
     footer.appendChild(background);
   }
   // Listens for src change on the image
-  let observer = new MutationObserver((changes) => {
-    changes.forEach(change => {
-      if (change.attributeName.includes('src')) {
-
+  imageObserver = new MutationObserver((changes) => {
+    changes.forEach(() => {
         // Makes a second image for a smooth fade-in transition
         let oldbg = document.createElement('img');
         oldbg.id = 'spf-old-cover';
@@ -70,20 +77,18 @@ function addBGImage(image) {
         footer.appendChild(oldbg);
         background.classList.add("transparent");
         background.src = image.src;
-        setTimeout(function(){
+        setTimeout(function () {
           background.classList.remove("transparent");
-          setTimeout(function(){
+          setTimeout(function () {
             oldbg.style.opacity = 0;
-            setTimeout(function(){
+            setTimeout(function () {
               footer.removeChild(oldbg);
             }, 1000);
-          },1100);
+          }, 1100);
         }, 100);
-        
-      }
     });
   });
-  observer.observe(image, { attributeFilter: ["src"] });
+  imageObserver.observe(image, { attributeFilter: ["src"] });
   background.src = image.src;
 }
 
@@ -91,11 +96,13 @@ function addBGImage(image) {
 function waitForElm(selector) {
   return new Promise(resolve => {
     if (document.querySelector(selector)) {
+      // console.log('SPOPUPFY: Element found: ' + selector);
       return resolve(document.querySelector(selector));
     }
 
     const observer = new MutationObserver(mutations => {
       if (document.querySelector(selector)) {
+        // console.log('SPOPUPFY: Element found after a while: ' + selector);
         resolve(document.querySelector(selector));
         observer.disconnect();
       }
@@ -111,11 +118,9 @@ function waitForElm(selector) {
 
 addButton();
 
-waitForElm('.cover-art-image').then((element) => {
-  addBGImage(element);
-});
+waitForElm('.cover-art-image').then((element) => {addBGImage(element)});
 
-waitForElm('footer').then(watchForImageRemoval());
+waitForElm('[data-testid="now-playing-widget"]').then(watchForImageRemoval);
 
 // //Re-arms the observer every 2 minutes, to account for AdBlockers
 // setInterval(() => {

@@ -1,5 +1,5 @@
 {
-    "name": "Spopupfy",
+    "name": "spopupfy",
     "description": "A simple mini player popup window for the Spotify web player.",
     "scripts": {
         "build": "web-ext build --ignore-files ./screenshots icon128.png LICENSE.md readme.md",
