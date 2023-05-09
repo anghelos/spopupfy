@@ -32,7 +32,7 @@
         top: 0;
         height: 100vh !important;
         width: 100vw;
-
+        background-color: black !important;
     }
 
     footer>div:first-child {
@@ -254,4 +254,8 @@
 /* Hide context menus */
 .spopupfy #context-menu {
     display: none;
+}
+
+.spopupfy .Root > div{
+    padding: 0;
 }
