@@ -5,9 +5,16 @@ const popupSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 11" fi
 
 const popupIMG = new DOMParser().parseFromString(popupSVG, 'image/svg+xml');
 
-const saveSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 11" fill="currentColor">
-<rect x=".75" y=".75" width="10" height="10" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/>
-<rect class="inner" x="2.6" y="2.6" width="5" height="2.5" rx=".4" ry=".4"/>
+const saveSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 13.5" fill="currentColor">
+<mask id="floppy">
+  <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+<rect x="3.75" y="6.5" width="8.5" height="5.5" rx=".4" ry=".4" fill="black"/>
+<rect x="4.5" y="1.5" width="5.75" height="2.5" rx=".4" ry=".4" fill="black"/>
+<rect mask="url(#floppy)" x="2" y=".75" width="12" height="12" rx="1.5" ry="1.5" fill="none" stroke="white" stroke-width="1.4"/>
+<rect x="13" y="-2" width="6" height="4"  fill="black" transform="rotate(45, 15, -2)"/>
+</mask>
+<rect mask="url(#floppy)" x="2" y=".75" width="12" height="12" rx="1.5" ry="1.5" fill="currentcolor" stroke="currentColor" stroke-width="1.4"/>
+<rect x="7.75" y=".75" width="1.4" height="2.25" rx=".4" ry=".4" fill="currentColor"/>
 </svg>`;
 const saveIMG = new DOMParser().parseFromString(saveSVG, 'image/svg+xml');
 
@@ -75,8 +82,10 @@ const addButton = function () {
     button.title = 'Toggle miniplayer';
     save = document.createElement('button');
     save.id = 'spopupfy-save';
+    save.title = 'Save size/position';
     reset = document.createElement('button');
     reset.id = 'spopupfy-reset';
+    reset.title = 'Reset size/position';
 
     button.appendChild(popupIMG.documentElement.cloneNode(true));
     save.appendChild(saveIMG.documentElement.cloneNode(true));
