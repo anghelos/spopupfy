@@ -3,7 +3,13 @@ const popupSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 11" fi
 <rect class="inner" x="2.6" y="2.6" width="5" height="2.5" rx=".4" ry=".4"/>
 </svg>`;
 
-const popup = new DOMParser().parseFromString(popupSVG, 'image/svg+xml');
+const popupIMG = new DOMParser().parseFromString(popupSVG, 'image/svg+xml');
+
+const saveSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 11" fill="currentColor">
+<rect x=".75" y=".75" width="10" height="10" rx="1.5" ry="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+<rect class="inner" x="2.6" y="2.6" width="5" height="2.5" rx=".4" ry=".4"/>
+</svg>`;
+const saveIMG = new DOMParser().parseFromString(saveSVG, 'image/svg+xml');
 
 let oldsrc = '';
 
@@ -48,16 +54,42 @@ function miniplayer() {
   }
 }
 
+function saveInfo() {
+  chrome.runtime.sendMessage({ text: "saveInfo" });
+}
+
+function resetInfo() {
+  chrome.runtime.sendMessage({ text: "resetInfo" });
+}
+
 const addButton = function () {
   let button = document.getElementById('spopupfy-button');
+  let save = document.getElementById('spopupfy-save');
+  let reset = document.getElementById('spopupfy-reset');
+
   if (!button) {
+    let menu = document.createElement('div');
+    menu.id = 'spopupfy-menu';
     button = document.createElement('button');
     button.id = 'spopupfy-button';
-    button.appendChild(popup.documentElement.cloneNode(true));
+    button.title = 'Toggle miniplayer';
+    save = document.createElement('button');
+    save.id = 'spopupfy-save';
+    reset = document.createElement('button');
+    reset.id = 'spopupfy-reset';
 
-    document.body.appendChild(button);
+    button.appendChild(popupIMG.documentElement.cloneNode(true));
+    save.appendChild(saveIMG.documentElement.cloneNode(true));
+    reset.appendChild(saveIMG.documentElement.cloneNode(true));
+
+    menu.appendChild(button);
+    menu.appendChild(save);
+    menu.appendChild(reset);
+    document.body.appendChild(menu);
   }
   button.addEventListener('click', miniplayer);
+  save.addEventListener('click', saveInfo);
+  reset.addEventListener('click', resetInfo);
 }
 
 
@@ -65,7 +97,7 @@ function addBGImage(image) {
   let background = document.getElementById('spf-background-image');
   footer = footer ? footer : document.querySelector('footer');
   image.id = 'spf-cover-art';
-  
+
   if (!background) {
     background = document.createElement('img');
     background.id = 'spf-background-image';
@@ -136,4 +168,15 @@ addButton();
 
 waitForElm('[data-testid="cover-art-image"]').then((element) => { addBGImage(element) });
 
-waitForElm('[data-testid="now-playing-widget"]').then((element) => {watchForImageRemoval(element)});
+waitForElm('[data-testid="now-playing-widget"]').then((element) => { watchForImageRemoval(element) });
+
+// On window resize, ask if user wants to save the new size, then send message to background.js
+// window.addEventListener('resize', () => {
+
+//   // create toast message
+//   let toast = document.createElement('div');
+//   toast.id = 'spopupfy-toast';
+//   toast.innerHTML = 'Save new size/position?';
+
+//   chrome.runtime.sendMessage({ text: "savePrefs" });
+// });

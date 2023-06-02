@@ -31,5 +31,8 @@
         "scripts": [
             "background.js"
         ]
-    }
+    },
+    "permissions": [
+        "storage"
+    ]
 }

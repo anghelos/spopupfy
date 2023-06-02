@@ -2,16 +2,27 @@
     --baseopacity: 0.2;
 }
 
-#spopupfy-button {
-    all: unset;
+#spopupfy-menu{
     position: fixed;
     bottom: 6px;
     right: 1rem;
-    color: #fff;
-    width: 1rem;
-    cursor: pointer;
     z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    width: 1rem;
+    height: 1.5rem;
+    overflow: hidden;
+}
+
+#spopupfy-menu button{
+    all: unset;
+    color: #fff;
+    cursor: pointer;
     opacity: 0.8;
+    width: 1rem;
+}
+#spopupfy-menu button:not(:first-child){
+    display: none;
 }
 
 
@@ -188,14 +199,38 @@
         color: #fff !important;
     }
 
-    #spopupfy-button {
+    #spopupfy-menu{
         top: 7px;
         bottom: unset;
         right: 16px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0rem;
+
+    }
+    #spopupfy-menu:hover{
+        height: 4.75rem;
+        overflow:visible;
+        transition: all 0.2s ease-in-out;
+    }
+    #spopupfy-menu button{
         opacity: var(--baseopacity);
         transition: opacity 0.4s ease-out;
     }
-
+    #spopupfy-menu button:not(:first-child){
+        display: inline-block;
+        height: 0rem;
+        transition: all 0.4s ease-out;
+        opacity: 0;
+    }
+    #spopupfy-menu:hover button:not(:first-child){
+        height: 1.5rem;
+        opacity: var(--baseopacity);
+    }
+    #spopupfy-menu button:not(:first-child):hover{
+        opacity: 1;
+        transition:none;
+    }
     .shadow {
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.1) !important;
     }
@@ -237,7 +272,7 @@
 }
 
 
-#spopupfy-button:hover {
+#spopupfy-menu button:hover {
     opacity: 1;
     transition: none;
 }
