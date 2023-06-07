@@ -8,9 +8,11 @@
 
 When navigating to [open.spotify.com](https://open.spotify.com/), a small icon will appear on the lower-right corner of the window. Clicking it will pop up the tab to the top-left corner of the screen, and re-style it into a mini player. Click the icon again to restore the original window.
 
+New as of version 0.5: Have a favorite desktop layout? You can now save the miniplayer's size and position!
+
 Simply resizing the Spotify web player window will also give you the mini-player style, but the window will still have the browser toolbars.
 
-If you need to access to more controls, you can just quickly resize the popup window to get the full Spotify web player interface.
+If you need to access to more controls, you can just quickly resize the popup window to get the full Spotify web player interface, or click the icon to send the miniplayer back to the full browser window.
 
 ## Screenshots
 
