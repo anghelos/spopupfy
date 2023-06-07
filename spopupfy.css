@@ -36,7 +36,16 @@
     display: none;
 }
 
-@media only screen and (max-width: 650px) and (max-height: 650px) {
+@media only screen and (max-width: 650px) and (max-height: 650px){
+
+    .Root > div {
+        padding: 0 !important;
+    }
+
+    /* Just in case this can help with performance, hide background-items */
+    .main-view-container, nav {
+        display: none;
+    }
 
     footer {
         position: fixed;
@@ -297,6 +306,3 @@
     display: none;
 }
 
-.spopupfy .Root > div{
-    padding: 0;
-}
