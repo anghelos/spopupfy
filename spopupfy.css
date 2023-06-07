@@ -202,15 +202,20 @@
     #spopupfy-menu{
         top: 7px;
         bottom: unset;
-        right: 16px;
+        right: 1rem;
         align-items: center;
         justify-content: space-between;
         gap: 0rem;
+        border-radius: 6px;
 
     }
     #spopupfy-menu:hover{
-        height: 4.75rem;
+        height: 4.9rem;
         overflow:visible;
+        background-color: #00000020;
+        right: 0.75rem;
+        width: 1.5rem;
+        padding: 0 0.25rem 0.15rem;
         transition: all 0.2s ease-in-out;
     }
     #spopupfy-menu button{
@@ -240,13 +245,14 @@
     }
 
 }
-
-@media only screen and (max-width: 400px) {
-    .cover-art {
+@media only screen and (max-width: 280px){
+    [data-testid="CoverSlotCollapsed__container"] {
         display: none;
     }
+}
 
-
+@media only screen and (max-width: 380px){
+    
     [data-testid="now-playing-widget"] {
         justify-content: center !important;
     }

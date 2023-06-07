@@ -1,14 +1,15 @@
-let defaultPreferences = {
+const defaultPreferences = {
   windowLeft: 0,
   windowTop: 0,
   windowWidth: 450,
   windowHeight: 170
 };
 
+let preferences;
 
 // Load preferences from storage
 browser.storage.local.get('preferences', (result) => {
-  preferences = result.preferences || defaultPreferences
+  preferences = result.preferences || structuredClone(defaultPreferences);
 });
 
 
@@ -24,17 +25,13 @@ const storePreferences = (windowInfo) => {
 }
 
 const resetPreferences = (windowId) => {
-  preferences = defaultPreferences;
+  preferences = structuredClone(defaultPreferences)
   browser.storage.local.set({ preferences: preferences });
   chrome.windows.update(windowId, { top: preferences.windowTop, left: preferences.windowLeft, width: preferences.windowWidth, height: preferences.windowHeight });
 }
 
 const popupWindow = (tab) => {
 
-  // // Load preferences from storage
-  // browser.storage.local.get('preferences', (result) => {
-  //   preferences = result.preferences || defaultPreferences
-  // });
   let top = preferences.windowTop;
   let left = preferences.windowLeft;
   let width = preferences.windowWidth;
@@ -78,9 +75,9 @@ chrome.runtime.onMessage.addListener(function (msg, sender) {
   else if (msg.text == "backToSpotify") {
 
     // get window size and position and store them in local storage
-    chrome.windows.get(sender.tab.windowId, function (window) {
-      storePreferences({ top: window.top, left: window.left, width: window.width, height: window.height });
-    });
+    // chrome.windows.get(sender.tab.windowId, function (window) {
+    //   storePreferences({ top: window.top, left: window.left, width: window.width, height: window.height });
+    // });
     mergeTab(sender.tab.id, originalWindow);
   }
   else if (msg.text == "resetInfo") {

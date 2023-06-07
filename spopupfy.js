@@ -18,6 +18,17 @@ const saveSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 13.5" f
 </svg>`;
 const saveIMG = new DOMParser().parseFromString(saveSVG, 'image/svg+xml');
 
+const resetSVG =`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" >
+<mask id="mask">
+  <rect x="0" y="0" width="16" height="16" fill="white"/>
+  <rect x="8" y="12" width="3.6" height="3" fill="black"/>
+</mask>
+  <circle mask="url(#mask)" cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <polyline points="11,10 11.5,13 14.6,12.75" stroke="currentColor" stroke-width="1.4" fill="none"/>
+</svg>`;
+
+const resetIMG = new DOMParser().parseFromString(resetSVG, 'image/svg+xml');
+
 let oldsrc = '';
 
 let footer;
@@ -89,7 +100,7 @@ const addButton = function () {
 
     button.appendChild(popupIMG.documentElement.cloneNode(true));
     save.appendChild(saveIMG.documentElement.cloneNode(true));
-    reset.appendChild(saveIMG.documentElement.cloneNode(true));
+    reset.appendChild(resetIMG.documentElement.cloneNode(true));
 
     menu.appendChild(button);
     menu.appendChild(save);
