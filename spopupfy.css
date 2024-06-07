@@ -131,7 +131,7 @@
         display: none;
     }
 
-    .playback-bar {
+    .playback-bar,  .player-controls>:last-child{
         position: absolute;
         bottom: 1rem;
         left: 0;
