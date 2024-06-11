@@ -81,7 +81,8 @@
 
     [data-testid="control-button-shuffle"],
     [data-testid="control-button-repeat"],
-    .control-button-heart {
+    .control-button-heart,
+    [data-testid="now-playing-widget"]>:last-child { /* New like button */
         position: fixed;
         top: 4.5px;
         right: 70px;
@@ -97,7 +98,7 @@
         right: 40px;
     }
 
-    .control-button-heart {
+    .control-button-heart, [data-testid="now-playing-widget"]>:last-child{
         right: 98px;
         cursor: pointer;
     }
@@ -119,7 +120,7 @@
 
     :is([data-testid="control-button-shuffle"],
     [data-testid="control-button-repeat"],
-    .control-button-heart):hover{
+    .control-button-heart):hover, [data-testid="now-playing-widget"]>:last-child:hover{
         opacity: calc(var(--baseopacity) + 0.38);
         transition: none;
     }
