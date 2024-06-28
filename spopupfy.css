@@ -104,7 +104,7 @@
     }
 
 
-
+/*   to-do: fix this   */
     .player-controls__buttons button::after {
         bottom: unset !important;
         top: 0;
@@ -132,7 +132,8 @@
         display: none;
     }
 
-    .playback-bar,  .player-controls>:last-child{
+    /* playback bar */
+    [aria-label="Player controls"]>:last-child{ 
         position: absolute;
         bottom: 1rem;
         left: 0;
@@ -175,11 +176,11 @@
         z-index: -2;
     }
 
-    .player-controls {
+    [aria-label="Player controls"] {
         mix-blend-mode: screen;
     }
 
-    .player-controls [aria-label] {
+    [aria-label="Player controls"] [aria-label] {
         cursor: pointer;
     }
 
