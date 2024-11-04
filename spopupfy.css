@@ -81,7 +81,6 @@
 
     [data-testid="control-button-shuffle"],
     [data-testid="control-button-repeat"],
-    .control-button-heart,
     [data-testid="now-playing-widget"]>:last-child { /* New like button */
         position: fixed;
         top: 4.5px;
@@ -98,11 +97,14 @@
         right: 40px;
     }
 
-    .control-button-heart, [data-testid="now-playing-widget"]>:last-child{
-        right: 98px;
+    [data-testid="now-playing-widget"]>:last-child{
+        /* right: 98px; */
         cursor: pointer;
+        position: static; /* for some mysterious (prob js) reason, this button is still positioned relative to a parent. I gave up on it */
     }
-
+    [data-testid="now-playing-widget"]>:last-child svg{
+        fill: #fff;
+    }
 
 /*   to-do: fix this   */
     .player-controls__buttons button::after {

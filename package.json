@@ -4,5 +4,8 @@
     "scripts": {
         "build": "web-ext build --ignore-files ./screenshots icon128.png LICENSE.md readme.md package.json",
         "test": "web-ext run --firefox=firefoxdeveloperedition"
+    },
+    "devDependencies": {
+        "web-ext": "^8.3.0"
     }
 }

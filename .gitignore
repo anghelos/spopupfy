@@ -1,3 +1,5 @@
 web-ext-artifacts/
 icon128.png
 pnpm-lock.yaml
+bun.lockb
+/node_modules/
