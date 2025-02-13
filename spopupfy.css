@@ -59,7 +59,7 @@
         width: 100vw;
         height: 100vh !important;
         justify-content: space-between !important;
-        padding-bottom: 20vh !important;
+        padding-bottom: 10vh !important;
         padding-left: 2rem !important;
         padding-right: 2rem !important;
         background-color: rgba(24, 24, 24, 0.2) !important;
@@ -98,12 +98,16 @@
     }
 
     [data-testid="now-playing-widget"]>:last-child{
-        /* right: 98px; */
+        right: 98px;
         cursor: pointer;
-        position: static; /* for some mysterious (prob js) reason, this button is still positioned relative to a parent. I gave up on it */
     }
+    
     [data-testid="now-playing-widget"]>:last-child svg{
         fill: #fff;
+    }
+
+    [aria-label="Expand"], [aria-label="Collapse"] {
+        display: none;
     }
 
 /*   to-do: fix this   */
