@@ -186,13 +186,13 @@
         cursor: pointer;
     }
 
-    [data-testid="control-button-playpause"] {
+    [data-testid="control-button-playpause"] > span {
         color: #fff;
-        background-color: transparent;
+        background-color: transparent !important;
         transform: scale(1.2);
     }
 
-    [data-testid="control-button-playpause"]:hover {
+    [data-testid="control-button-playpause"]:hover > span{
         transform: scale(1.4);
     }
 
