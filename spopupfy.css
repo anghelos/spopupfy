@@ -47,7 +47,7 @@
         display: none;
     }
 
-    footer {
+    [aria-label="Now playing bar"] {
         position: fixed;
         top: 0;
         height: 100vh !important;
@@ -55,7 +55,7 @@
         background-color: black !important;
     }
 
-    footer>div:first-child {
+    [aria-label="Now playing bar"]>div:first-child {
         width: 100vw;
         height: 100vh !important;
         justify-content: space-between !important;
@@ -65,7 +65,7 @@
         background-color: rgba(24, 24, 24, 0.2) !important;
     }
 
-    footer>div>div:first-child {
+    [aria-label="Now playing bar"]>div>div:first-child {
         width: 60%;
     }
 
@@ -74,7 +74,7 @@
         transform: none !important;
     }
 
-    footer>div>div:nth-child(2) {
+    [aria-label="Now playing bar"]>div>div:nth-child(2) {
         width: 35%;
         margin-top: 1rem;
     }
@@ -133,7 +133,7 @@
 
 
     [aria-label="Expand"],
-    footer>div>div:nth-child(n+3),
+    [aria-label="Now playing bar"]>div>div:nth-child(n+3),
     .Root__top-container> :not(.Root__now-playing-bar) {
         display: none;
     }
@@ -200,7 +200,7 @@
         transform: scale(1.4);
     }
 
-    footer *:is(::before, ::after) {
+    [aria-label="Now playing bar"] *:is(::before, ::after) {
         background: none !important;
         box-shadow: none !important;
     }
@@ -278,18 +278,18 @@
         margin: 0;
     }
 
-    footer>div:first-child {
+    [aria-label="Now playing bar"]>div:first-child {
         padding: 5vh !important;
         flex-direction: column !important;
         justify-content: center !important;
         gap: 5vh !important;
     }
 
-    footer>div>div:nth-child(2) {
+    [aria-label="Now playing bar"]>div>div:nth-child(2) {
         margin-top: 2vh;
     }
 
-    footer>div>div {
+    [aria-label="Now playing bar"]>div>div {
         width: fit-content !important;
     }
 }

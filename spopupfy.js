@@ -115,7 +115,7 @@ const addButton = function () {
 
 function addBGImage(image) {
   let background = document.getElementById('spf-background-image');
-  footer = footer ? footer : document.querySelector('footer');
+  footer = footer ? footer : document.querySelector('[aria-label="Now playing bar"]');
   image.id = 'spf-cover-art';
 
   if (!background) {
@@ -132,7 +132,7 @@ function addBGImage(image) {
 
 function changeImage(cover, background) {
   background = background ? background : document.getElementById('spf-background-image');
-  footer = footer ? footer : document.querySelector('footer');
+  footer = footer ? footer : document.querySelector('[aria-label="Now playing bar"]');
 
   if (!background) {
     addBGImage(cover);
