@@ -79,9 +79,9 @@
         margin-top: 1rem;
     }
 
-    [aria-label*="Shuffle"],
-    [aria-label*="repeat"],
-    [aria-label*="Add to"] { 
+    [data-testid="general-controls"]>div:first-child>button:first-child,
+    [data-testid="control-button-repeat"],
+    [data-testid="now-playing-widget"]>:last-child { /* New like button */
         position: fixed;
         top: 4.5px;
         right: 70px;
@@ -93,16 +93,16 @@
     
     
 
-    [aria-label*="repeat"] {
+    [data-testid="control-button-repeat"] {
         right: 40px;
     }
 
-    [aria-label*="Add to"]{
-        right: 106px;
+    [data-testid="now-playing-widget"]>:last-child{
+        right: 98px;
         cursor: pointer;
     }
     
-    [aria-label*="Add to"] svg{
+    [data-testid="now-playing-widget"]>:last-child svg{
         fill: #fff;
     }
 
@@ -124,9 +124,9 @@
         opacity: calc(var(--baseopacity) + 0.38);
     }
 
-    :is([aria-label*="Shuffle"],
-    [aria-label*="repeat"],
-    .control-button-heart):hover, [aria-label*="Add to"]:hover{
+    :is([data-testid="general-controls"]>div:first-child>button:first-child,
+    [data-testid="control-button-repeat"],
+    .control-button-heart):hover, [data-testid="now-playing-widget"]>:last-child:hover{
         opacity: calc(var(--baseopacity) + 0.38);
         transition: none;
     }
