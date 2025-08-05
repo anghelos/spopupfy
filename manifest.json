@@ -2,7 +2,7 @@
     "name": "Spopupfy",
     "manifest_version": 2,
     "description": "A simple mini player popup window for the Spotify web player.",
-    "version": "0.5.10",
+    "version": "0.6.0",
     "icons": {
         "48": "icon.svg",
         "96": "icon.svg",
