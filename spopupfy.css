@@ -85,7 +85,7 @@
         position: fixed;
         top: 4.5px;
         right: 70px;
-        transform: scale(0.8);
+        transform: scale(0.8) !important;
         color: #fff !important;
         opacity: var(--baseopacity);
         transition: opacity 0.4s ease-out;
@@ -126,7 +126,7 @@
 
     :is([aria-label*="shuffle" i],
     [aria-label*="repeat" i],
-    .control-button-heart):hover, [aria-label*="Add to"]:hover{
+    .control-button-heart, [aria-label*="Add to"]):hover{
         opacity: calc(var(--baseopacity) + 0.38);
         transition: none;
     }
@@ -145,6 +145,17 @@
         left: 0;
         width: 100vw;       
     }
+    
+    /* disabled */
+    [aria-disabled="true"], :disabled {
+        opacity: calc(var(--baseopacity) + 0.28);
+        pointer-events: none;
+    }
+
+    /* Untested, hide advertisement "like" buttons */
+    /* [aria-label*="advertisement" i]{
+        display: none !important;
+    } */
 
 
     /*    Listening on ... message   */
