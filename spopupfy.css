@@ -79,9 +79,9 @@
         margin-top: 1rem;
     }
 
-    [data-testid="general-controls"]>div:first-child>button:first-child,
-    [data-testid="control-button-repeat"],
-    [data-testid="now-playing-widget"]>:last-child { /* New like button */
+    [aria-label*="shuffle" i],
+    [aria-label*="repeat" i],
+    [aria-label*="Add to"] { 
         position: fixed;
         top: 4.5px;
         right: 70px;
@@ -93,16 +93,16 @@
     
     
 
-    [data-testid="control-button-repeat"] {
+    [aria-label*="repeat" i] {
         right: 40px;
     }
 
-    [data-testid="now-playing-widget"]>:last-child{
-        right: 98px;
+    [aria-label*="Add to"]{
+        right: 106px;
         cursor: pointer;
     }
     
-    [data-testid="now-playing-widget"]>:last-child svg{
+    [aria-label*="Add to"] svg{
         fill: #fff;
     }
 
@@ -124,9 +124,9 @@
         opacity: calc(var(--baseopacity) + 0.38);
     }
 
-    :is([data-testid="general-controls"]>div:first-child>button:first-child,
-    [data-testid="control-button-repeat"],
-    .control-button-heart):hover, [data-testid="now-playing-widget"]>:last-child:hover{
+    :is([aria-label*="shuffle" i],
+    [aria-label*="repeat" i],
+    .control-button-heart):hover, [aria-label*="Add to"]:hover{
         opacity: calc(var(--baseopacity) + 0.38);
         transition: none;
     }
