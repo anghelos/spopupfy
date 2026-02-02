@@ -182,7 +182,7 @@
         height: 110vh;
         z-index: -1;
         filter: blur(2.5vw);
-        transition: opacity 1s ease-in;
+        transition: opacity 1s ease-in, filter 0.4s ease-out;
         opacity: 1;
     }
     #spf-background-image.transparent{
@@ -304,6 +304,69 @@
     [aria-label="Now playing bar"]>div>div {
         width: fit-content !important;
     }
+}
+
+@media only screen and (max-aspect-ratio:1/1.15){
+    #spf-background-image, #spf-old-cover{
+        filter:none;
+        object-fit: contain;
+        top: 2vw;
+        left: 2vw;
+        width: 96vw;
+        height: auto;
+        z-index: -1;
+        border-radius: 6px;
+    }
+    [data-testid="CoverSlotCollapsed__container"] {
+        display: none;
+    }
+    [data-testid="now-playing-widget"] {
+        position: fixed;
+        bottom: 2vw;
+        left: 4vw;
+        height: calc(100vh - 102vw);
+        /* @media (min-width: 200px){
+            left: 10vw;
+        } */
+        & [data-testid="context-item-info-title"]{
+            font-size: 5vw;
+        }
+        & [data-testid="context-item-info-subtitles"]{
+            font-size: 4vw;
+            opacity: 0.8;
+        }
+    }
+
+
+    [aria-label="Now playing bar"]>div:first-child {
+        padding: 5vh !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        gap: 5vh !important;
+    }
+
+    [aria-label="Now playing bar"] {
+        &> div:first-child {
+            max-height: 100vw;
+            background-color: rgba(0, 0, 0, 0) !important;
+        }
+        &> div > :not(:first-child) {
+            opacity: 0;
+            transition: opacity 0.4s ease-out;
+        }
+        &:hover > div > :not(:first-child) {
+            opacity: 1;
+        }
+        &:hover #spf-background-image {
+            filter: blur(8px); 
+        }
+    }
+
+    [aria-label="Player controls"]>:last-child{ 
+        top: 90vw;
+        bottom: unset;
+    }
+
 }
 
 

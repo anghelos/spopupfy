@@ -40,7 +40,7 @@ const BackupObserver = new MutationObserver(() => {
   if (!cover) {
     console.log('SPOPUPFY: Cover art removed, fixing');
     setTimeout(() => {
-      waitForElm('[data-testid="cover-art-image"]').then((element) => {
+      waitForElm('.NowPlayingView [data-testid="cover-art-image"]').then((element) => {
         addBGImage(element);
       });
     }, 800);
@@ -185,8 +185,8 @@ function waitForElm(selector) {
 
 addButton();
 
-
-waitForElm('[data-testid="cover-art-image"]').then((element) => { addBGImage(element) });
+// Added ".NowPlayingView" to grab the larger image in the side panel.
+waitForElm('.NowPlayingView [data-testid="cover-art-image"]').then((element) => { addBGImage(element) });
 
 waitForElm('[data-testid="now-playing-widget"]').then((element) => { watchForImageRemoval(element) });
 
