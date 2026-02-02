@@ -3,3 +3,4 @@ icon128.png
 pnpm-lock.yaml
 bun.lock*
 /node_modules/
+package-lock.json
