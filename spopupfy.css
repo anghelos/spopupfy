@@ -325,14 +325,12 @@
         bottom: 2vw;
         left: 4vw;
         height: calc(100vh - 102vw);
-        /* @media (min-width: 200px){
-            left: 10vw;
-        } */
+        max-width: 92vw;
         & [data-testid="context-item-info-title"]{
-            font-size: 5vw;
+            font-size: 0.9rem;
         }
         & [data-testid="context-item-info-subtitles"]{
-            font-size: 4vw;
+            font-size: 0.8rem;
             opacity: 0.8;
         }
     }
