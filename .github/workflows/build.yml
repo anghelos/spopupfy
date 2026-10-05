@@ -1,0 +1,28 @@
+name: Build Firefox Add-on
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: "Build with web-ext"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v4
+
+      - name: "Run web-ext build"
+        uses: kewisch/action-web-ext@v2
+        with:
+          cmd: build
+          source: .
+          ignoreFiles: ["./screenshots", "icon128.png", "LICENSE.md", "readme.md", "package.json"]
+          
+      - name: "Upload Artifact"
+        uses: actions/upload-artifact@v4
+        with:
+          name: target.xpi
+          path: ${{ steps.web-ext-build.outputs.target }}
