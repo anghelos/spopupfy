@@ -19,8 +19,8 @@ jobs:
         with:
           cmd: build
           source: .
-          ignoreFiles: ["./screenshots", "icon128.png", "LICENSE.md", "readme.md", "package.json"]
-          
+          ignoreFiles: '["./screenshots", "icon128.png", "LICENSE.md", "readme.md", "package.json"]'
+
       - name: "Upload Artifact"
         uses: actions/upload-artifact@v4
         with:
