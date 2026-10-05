@@ -33,6 +33,9 @@ let oldsrc = '';
 
 let footer;
 
+const highresImageSelector = '[data-testid="cover-art-slot"] [data-testid="cover-art-image"]';
+const imageSelector = '[data-testid="cover-art-image"]';
+
 // Listens for the removal of the cover image (when Spotify replaces it with an ad), then resets the cover art observer
 const BackupObserver = new MutationObserver(() => {
   // console.log('SPOPUPFY: Mutation observed');
@@ -40,13 +43,15 @@ const BackupObserver = new MutationObserver(() => {
   if (!cover) {
     console.log('SPOPUPFY: Cover art removed, fixing');
     setTimeout(() => {
-      waitForElm('[aria-label="Now playing view"] [data-testid="cover-art-image"][data-image-status="loaded"]').then((element) => {
-        addBGImage(element);
+      waitForElm(imageSelector).then((element) => {
+        addBGImage(document.querySelectorAll(imageSelector)[document.querySelectorAll(imageSelector).length - 1]);
       });
     }, 800);
   }
   else if (cover.src != oldsrc) {
-    changeImage(cover);
+    waitForElm(imageSelector).then((element) => {
+        changeImage(document.querySelectorAll(imageSelector)[document.querySelectorAll(imageSelector).length - 1]);
+      });
   }
 });
 
@@ -185,18 +190,9 @@ function waitForElm(selector) {
 
 addButton();
 
-// Added "[aria-label="Now playing view"]" to grab the larger image in the side panel.
-waitForElm('[aria-label="Now playing view"] [data-testid="cover-art-image"][data-image-status="loaded"]').then((element) => { addBGImage(element) });
+
+waitForElm(imageSelector).then((element) => {
+  addBGImage(document.querySelectorAll(imageSelector)[document.querySelectorAll(imageSelector).length - 1]);
+});
 
 waitForElm('[data-testid="now-playing-widget"]').then((element) => { watchForImageRemoval(element) });
-
-// On window resize, ask if user wants to save the new size, then send message to background.js
-// window.addEventListener('resize', () => {
-
-//   // create toast message
-//   let toast = document.createElement('div');
-//   toast.id = 'spopupfy-toast';
-//   toast.innerHTML = 'Save new size/position?';
-
-//   chrome.runtime.sendMessage({ text: "savePrefs" });
-// });
