@@ -14,7 +14,8 @@ jobs:
       - name: "Checkout code"
         uses: actions/checkout@v4
 
-      - name: "web-ext build"
+      - name: "Build with web-ext"
+        id: web-ext-build
         uses: kewisch/action-web-ext@v2
         with:
           cmd: build
