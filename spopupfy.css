@@ -133,7 +133,7 @@
 
 
     [aria-label="Expand"],
-    [aria-label="Now playing bar"]>div>div:nth-child(n+3),
+    [aria-label="Now playing bar"] [aria-label*="lyrics" i]~*, /* anything next to the lyrics button */
     .Root__top-container> :not(.Root__now-playing-bar) {
         display: none;
     }
