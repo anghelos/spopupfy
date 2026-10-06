@@ -142,8 +142,10 @@
 
 
     [aria-label="Expand"],
-    [aria-label="Now playing bar"] [aria-label*="lyrics" i]~*, /* anything next to the lyrics button */
-    [aria-label="Now playing bar"]>div>div:nth-child(n+3):not(:has([aria-label*="lyrics" i])), /* also hide if lyrics button not present */
+    /* [aria-label="Now playing bar"] [aria-label*="lyrics" i]~*,
+    [aria-label="Now playing bar"]>div>div:nth-child(n+3):not(:has([aria-label*="lyrics" i])), */ /*Lyrics WIP*/
+    [aria-label="Now playing bar"]>div>div:nth-child(n+3),
+    [aria-label="Now playing bar"]>div>div:nth-child(2) {
     [aria-label*="like advertisement" i],
     .Root__top-container> :not(.Root__now-playing-bar) {
         display: none;
@@ -163,14 +165,7 @@
         pointer-events: none;
     }
 
-    /* Untested, hide advertisement "like" buttons */
-    /* [aria-label*="advertisement" i]{
-        display: none !important;
-    } */
-
-
     /*    Listening on ... message   */
-
     .encore-bright-accent-set {
         position: absolute;
         background-color: transparent !important;
@@ -181,6 +176,29 @@
         bottom: 2em;
         left: 0;
     }
+
+    /* Lyrics WIP*/
+    /* :has(+#lyrics-cinema){
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: transparent !important;
+        transform: none !important;
+        pointer-events: none;
+    }
+    :has(+#lyrics-cinema) div:not([data-testid="lyrics-line"]){
+        margin:0;
+    }
+
+    [data-testid="lyrics-line"]{
+        max-width: 90vw;
+        font-size: 4vw;
+    }
+
+    :is([data-cinema-npv-duringEnter], [data-cinema-npv-postEnter], [data-cinema-npv-preExit]) #main-view{
+        display: block !important;
+        transform: none !important;
+    } */
 
 
     #spf-background-image, #spf-old-cover {
