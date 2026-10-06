@@ -81,7 +81,8 @@
 
     [aria-label*="shuffle" i],
     [aria-label*="repeat" i],
-    [aria-label*="Add to"] { 
+    [aria-label*="Add to"],
+    [aria-label *="lyrics" i] { 
         position: fixed;
         top: 4.5px;
         right: 70px;
@@ -104,6 +105,10 @@
     
     [aria-label*="Add to"] svg{
         fill: #fff;
+    }
+
+    [aria-label *="lyrics" i] {
+        right: 128px;
     }
 
     [aria-label="Expand"], [aria-label="Collapse"] {
