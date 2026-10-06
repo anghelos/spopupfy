@@ -108,7 +108,11 @@
     }
 
     [aria-label *="lyrics" i] {
-        right: 128px;
+        right: 124px;
+        display: none; /* only show lyrics button when the song has lyrics */
+    }
+    [aria-label ="Lyrics"] {
+        display: inline-block; /* only show lyrics button when the song has lyrics */
     }
 
     [aria-label="Expand"], [aria-label="Collapse"] {
