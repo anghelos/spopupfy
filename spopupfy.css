@@ -143,6 +143,8 @@
 
     [aria-label="Expand"],
     [aria-label="Now playing bar"] [aria-label*="lyrics" i]~*, /* anything next to the lyrics button */
+    [aria-label="Now playing bar"]>div>div:nth-child(n+3):not(:has([aria-label*="lyrics" i])), /* also hide if lyrics button not present */
+    [aria-label*="like advertisement" i],
     .Root__top-container> :not(.Root__now-playing-bar) {
         display: none;
     }
