@@ -53,6 +53,7 @@
         height: 100vh !important;
         width: 100vw;
         background-color: black !important;
+        opacity: 1 !important;
     }
 
     [aria-label="Now playing bar"]>div:first-child {
@@ -114,6 +115,9 @@
     [aria-label ="Lyrics"] {
         display: inline-block; /* only show lyrics button when the song has lyrics */
     }
+    [aria-label="Now playing bar"]>div>div:nth-child(n+3){
+    position:absolute;
+    }
 
     [aria-label="Expand"], [aria-label="Collapse"] {
         display: none;
@@ -142,10 +146,9 @@
 
 
     [aria-label="Expand"],
-    /* [aria-label="Now playing bar"] [aria-label*="lyrics" i]~*,
-    [aria-label="Now playing bar"]>div>div:nth-child(n+3):not(:has([aria-label*="lyrics" i])), */ /*Lyrics WIP*/
-    [aria-label="Now playing bar"]>div>div:nth-child(n+3),
-    [aria-label="Now playing bar"]>div>div:nth-child(2) {
+    [aria-label="Now playing bar"] [aria-label*="lyrics" i]~*,
+    [aria-label="Now playing bar"]>div>div:nth-child(n+3):not(:has([aria-label*="lyrics" i])), /*Lyrics WIP*/
+    /* [aria-label="Now playing bar"]>div>div:nth-child(n+3), */
     [aria-label*="like advertisement" i],
     .Root__top-container> :not(.Root__now-playing-bar) {
         display: none;
@@ -178,16 +181,32 @@
     }
 
     /* Lyrics WIP*/
-    /* :has(+#lyrics-cinema){
+    #main:has([aria-label="Lyrics"][aria-pressed="true"]) :has(+ #lyrics-cinema){
         position: fixed;
+        width: 100vw;
+        height: 100vh;
         top: 0;
         left: 0;
-        background-color: transparent !important;
-        transform: none !important;
+        z-index: 7;
         pointer-events: none;
+        background-color: rgba(0,0,0,0.8);
+        margin:0;
+    }
+    :has(+#lyrics-cinema) *{
+        background: none;
+    }
+    
+    :has(+#lyrics-cinema) ~div{
+        z-index:auto !important;
+    }
+    
+    
+    :has(+#lyrics-cinema)> :first-child{
+        display: none;
     }
     :has(+#lyrics-cinema) div:not([data-testid="lyrics-line"]){
         margin:0;
+/*         padding: 0; */
     }
 
     [data-testid="lyrics-line"]{
@@ -198,7 +217,7 @@
     :is([data-cinema-npv-duringEnter], [data-cinema-npv-postEnter], [data-cinema-npv-preExit]) #main-view{
         display: block !important;
         transform: none !important;
-    } */
+    }
 
 
     #spf-background-image, #spf-old-cover {
