@@ -93,6 +93,12 @@
         transition: opacity 0.4s ease-out;
     }
     
+    #main:has([aria-label="Lyrics"][aria-pressed="true"]) :is([aria-label*="shuffle" i],
+    [aria-label*="repeat" i],
+    [aria-label*="Add to"],
+    [aria-label *="lyrics" i] ){
+        opacity: 1;
+    }
     
 
     [aria-label*="repeat" i] {
