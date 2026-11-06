@@ -195,4 +195,4 @@ waitForElm(imageSelector).then((element) => {
   addBGImage(document.querySelectorAll(imageSelector)[document.querySelectorAll(imageSelector).length - 1]);
 });
 
-waitForElm('[data-testid="now-playing-widget"]').then((element) => { watchForImageRemoval(element) });
+waitForElm('[data-testid^="now-playing-widget"]').then((element) => { watchForImageRemoval(element) });

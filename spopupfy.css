@@ -71,7 +71,7 @@
     }
 
     /* Remove transform when cover art is expanded */
-    [data-testid="now-playing-widget"] {
+    [data-testid^="now-playing-widget"] {
         transform: none !important;
     }
 
@@ -336,11 +336,11 @@
 
 @media only screen and (max-width: 380px){
     
-    [data-testid="now-playing-widget"] {
+    [data-testid^="now-playing-widget"] {
         justify-content: center !important;
     }
 
-    [data-testid="now-playing-widget"] * {
+    [data-testid^="now-playing-widget"] * {
         margin: 0;
     }
 
@@ -374,7 +374,7 @@
     [data-testid="CoverSlotCollapsed__container"] {
         display: none;
     }
-    [data-testid="now-playing-widget"] {
+    [data-testid^="now-playing-widget"] {
         position: fixed;
         bottom: 2vw;
         left: 4vw;
